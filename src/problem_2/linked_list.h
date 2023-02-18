@@ -34,9 +34,24 @@ public:
 
     // copy constructor
     LinkedList(const LinkedList<T> &other_list) : LinkedList() {
-        /*
-         * TODO: homework
-         */
+        // Reach both dummy nodes
+        ListNode<T>* current = head;
+        ListNode<T>* current_other = other_list.head;
+
+        // Loop until end of other list
+        while (current_other->next != nullptr)
+        {
+            // First, peek at the next element of other list
+            current_other = current_other->next;
+
+            // Create a copy of other list node into heap (deep copy)
+            ListNode<T>* new_node = new ListNode<T>(current_other->val);
+            current->next = new_node;
+            num_of_element++;
+
+            // Lastly, traverse this list current
+            current = current->next;
+        }
     }
 
     // destructor
@@ -108,6 +123,11 @@ public:
     void merge(const List<T> &other) override;
 
     void reverse_iterative() override;
+
+    // My own functions
+    virtual bool exists(T &val);
+
+    virtual void insert(T &val, int index);
 };
 
 #include "linked_list.cpp"

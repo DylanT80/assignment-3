@@ -18,16 +18,13 @@ public:
     }
 
     virtual bool mercy_rule_apply() {
-        /*
-         * TODO: homework
-         */
+        // Based on unit test
+        return inventory_id % 13 == 0;
     }
 
     bool operator==(const StoreMediaInterface &other_media) const {
-        /*
-         * TODO: homework
-         */
-        return false;
+        // other media id equals this id
+        return other_media.inventory_id == this->inventory_id;
     };
 
     bool operator!=(const StoreMediaInterface &other_media) const {
